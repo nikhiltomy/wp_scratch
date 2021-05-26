@@ -1,0 +1,14 @@
+/*
+
+Theme Name: wp_scratch
+Description: Developing a new theme from scratch
+Author: Tommy
+Text Domain: wp_scratch
+version: 1.0
+
+*/
+
+html,body{
+    margin: 0px !important;
+    padding: 0px;
+}
