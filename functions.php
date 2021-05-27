@@ -1,30 +1,67 @@
 <?php
 
-function wp_scratch_styles(){
-    wp_enqueue_style('main-css',get_stylesheet_directory_uri().'/style.css',array('bootstrap'),'1.0','all');
-    wp_enqueue_style('bootstrap','https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css',array(),'5.0','all');
-}
+// Add Theme Support
+add_theme_support( 'title-tag' );
+add_theme_support( 'post-thumbnails' );
+add_theme_support( 'post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'] );
+add_theme_support( 'html5' );
+add_theme_support( 'automatic-feed-links' );
+add_theme_support( 'custom-background' );
+add_theme_support( 'custom-header' );
+add_theme_support( 'custom-logo' );
+add_theme_support( 'customize-selective-refresh-widgets' );
+add_theme_support( 'starter-content' );
 
-add_action('wp_enqueue_scripts','wp_scratch_styles');
+// Load in our CSS
+function wphierarchy_enqueue_styles() {
 
-
-
-function wp_scratch_scripts(){
-    wp_enqueue_script('bootstrap-js-bundle','https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',array(),'5.0','true');
-}
-
-add_action('wp_enqueue_scripts ','wp_scratch_scripts');
-
-
-function wp_scratch_register_menu(){
-    $locations = array(
-        'Primary'=>"Primary Menu is Here",
-        'Footer'=>"Footer Menu is Here"
-    );
-    register_nav_menus($locations);
+  wp_enqueue_style( 'main-css', get_stylesheet_directory_uri() . '/style.css', [], time(), 'all' );
 
 }
+add_action( 'wp_enqueue_scripts', 'wphierarchy_enqueue_styles' );
 
-add_action('init','wp_scratch_register_menu');
+
+// Register Menu Locations
+register_nav_menus( [
+    'main-menu' => esc_html__( 'Main Menu Select', 'wpheirarchy' ),
+]);
+
+function wphierarchy_enqueue_widgets(){
+  $widget1 =[
+      "name" => "Main Sidebar",
+      "id"   => "main-sidebar",
+      'description' => "Add Widgets to the main sidebar",
+      'before_widget' => '<section class="widget">',
+      'after_widget' => '</section>',
+      'before_title' => '<h3 class="widget-title">',
+      'after_title'  => '</h3>'
+  ];
+  $widget2 =[
+      "name" => "Footer Sidebar",
+      "id"   => "footer-sidebar",
+      'description' => "Add Widgets to the Footer sidebar",
+      'before_widget' => '<section class="widget">',
+      'after_widget' => '</section>',
+      'before_title' => '<h5 class="widget-title">',
+      'after_title'  => '</h5>'
+  ];
+  register_sidebar($widget1);
+  register_sidebar($widget2);
+}
+add_action( 'widgets_init','wphierarchy_enqueue_widgets');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
