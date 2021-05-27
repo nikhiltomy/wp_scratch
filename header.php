@@ -10,10 +10,6 @@
  <?php wp_body_open(); ?>
     <div id="page">
 
-      <a href="#content" class="skip-link screen-reader-text">
-        <?php esc_html_e( 'Skip to content', 'wphierarchy' ); ?>
-      </a>
-
       <header id="masthead" class="site-header" role="banner">
 
         <div class="site-branding">

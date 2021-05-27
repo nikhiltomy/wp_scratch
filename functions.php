@@ -26,33 +26,14 @@ register_nav_menus( [
     'main-menu' => esc_html__( 'Main Menu Select', 'wpheirarchy' ),
 ]);
 
-function wphierarchy_enqueue_widgets(){
-  $widget1 =[
-      "name" => "Main Sidebar",
-      "id"   => "main-sidebar",
-      'description' => "Add Widgets to the main sidebar",
-      'before_widget' => '<section class="widget">',
-      'after_widget' => '</section>',
-      'before_title' => '<h3 class="widget-title">',
-      'after_title'  => '</h3>'
-  ];
-  $widget2 =[
-      "name" => "Footer Sidebar",
-      "id"   => "footer-sidebar",
-      'description' => "Add Widgets to the Footer sidebar",
-      'before_widget' => '<section class="widget">',
-      'after_widget' => '</section>',
-      'before_title' => '<h5 class="widget-title">',
-      'after_title'  => '</h5>'
-  ];
-  register_sidebar($widget1);
-  register_sidebar($widget2);
+
+
+
+function modify_description($text){
+  $new_text=$text."modified";
+  return $new_text;
 }
-add_action( 'widgets_init','wphierarchy_enqueue_widgets');
-
-
-
-
+add_action('mod_des','modify_description');
 
 
 
