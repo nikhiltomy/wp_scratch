@@ -1,13 +1,18 @@
+<?php
+//Template Name: splash page
+//Template Post Type: post,page
+?>
+
 <?php get_header(); ?>
 
 <div id="primary" class="content-area">
-    <h5>index.php</h5>
-
+    <h5>Template-splash.php</h5>
+    <?php $title = esc_html__('<h1>Hello!</h1>','wptags') ?>
     <main id="main" class="site-main" role="main">
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
            <?php get_template_part('template-parts/content') ?>
         <?php endwhile; else: ?>
-         <?php get_template_part('template-parts/content','none') ?>
+         <?php get_template_part('templateparts/content','none') ?>
         <?php endif; ?>
     </main>
 

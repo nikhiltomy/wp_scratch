@@ -15,7 +15,7 @@ add_theme_support( 'starter-content' );
 // Load in our CSS
 function wphierarchy_enqueue_styles() {
 
-  wp_enqueue_style( 'main-css', get_stylesheet_directory_uri() . '/style.css', [], time(), 'all' );
+  wp_enqueue_style('main-css', get_stylesheet_directory_uri() . '/style.css', [], time(), 'all');
 
 }
 add_action( 'wp_enqueue_scripts', 'wphierarchy_enqueue_styles' );
@@ -33,8 +33,17 @@ function modify_description($text){
   $new_text=$text."modified";
   return $new_text;
 }
-add_action('mod_des','modify_description');
+add_filter('mod_des','modify_description');
 
+
+function sample_admin_notice__success() {
+  ?>
+  <div class="notice notice-success is-dismissible">
+    <p><?php _e( 'Done Nikhil!', 'sample-text-domain' ); ?></p>
+  </div>
+  <?php
+}
+add_action( 'admin_notices', 'sample_admin_notice__success' );
 
 
 
